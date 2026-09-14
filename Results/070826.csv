@@ -1,0 +1,15 @@
+Player 1-1,Player 1-2,Player 2-1,Player 2-2,Team 1 score,Team 2 score
+Ethan L,Daniel R,Antoine D,Alexandra V,10,2
+Ethan P,Mykolas,Daniel R,Daniel S,3,10
+Ethan L,Alexandra V,Daniel R,Daniel S,5,10
+Hubert H,Mykolas,Daniel R,Ethan P,4,10
+Antoine D,Hubert H,Mykolas,Badr,10,3
+Hubert H,Semawit,Antoine D,Mykolas,8,10
+Hubert H,Deva,Antoine D,Semawit,10,4
+Antoine D,Deva,Ethan L,Daniel S,10,5
+Ethan L,Ethan P,Daniel S,Mykolas,10,1
+Ethan P,Alexandra V,Ethan L,Antoine D,10,4
+Hubert H,Daniel S,Deva,Ethan P,10,3
+Hubert H,Alexandra V,Daniel R,Deva,10,7
+Ethan P,Alexandra V,Ethan L,Mykolas,6,10
+Ethan P,Mykolas,Deva,Ethan L,10,2
