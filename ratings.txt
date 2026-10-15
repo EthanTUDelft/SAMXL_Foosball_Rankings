@@ -1,13 +1,11 @@
-Ethan L,1069
-Ethan P,1139
-Daniel S,683
-Daniel R,1129
-Hubert H,1299
+Ethan L,1172
+Ethan P,1191
+Daniel S,593
+Hubert H,1276
 Alexandra V,839
-Antoine D,1091
-Mykolas,1213
-Deva,1014
-Adam,855
-Alex,855
-Miguel,845
-Aydin,991
+Antoine D,1209
+Mykolas,1193
+Deva,963
+Adam,823
+Alex,799
+Miguel,915

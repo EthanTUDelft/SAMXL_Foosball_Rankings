@@ -1,4 +1,7 @@
 import math as m
+import csv
+import glob
+import sys
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -76,9 +79,37 @@ def update_elo(ratings_file, results_file):
     return players
 
 
+def count_games(results_dir='Results'):
+    games = {}
+    for filename in glob.glob(results_dir + '/*.csv'):
+        with open(filename, 'r') as file:
+            for row in list(csv.reader(file))[1:]:
+                if len(row) >= 6:
+                    for name in row[:4]:
+                        games[name] = games.get(name, 0) + 1
+    return games
+
+
+def shrunk_rating(elo, games, prior_games=100, start=1000):
+    # Ratings from few games are pulled toward the starting rating,
+    # so a high Elo only counts fully once it is backed by enough games.
+    return start + (elo - start) * games / (games + prior_games)
+
+
+def print_leaderboard(ratings_file='ratings.txt', results_dir='Results'):
+    players = load_rankings(ratings_file)
+    games = count_games(results_dir)
+    board = sorted(players, key=lambda p: -shrunk_rating(players[p], games.get(p, 0)))
+    for i, p in enumerate(board, 1):
+        print(i, p, round(shrunk_rating(players[p], games.get(p, 0))), players[p], games.get(p, 0))
+
+
 if __name__ == '__main__':
+    if '--leaderboard' in sys.argv:
+        print_leaderboard()
+        sys.exit()
     ratings_file = 'ratings.txt'
-    results_file = 'Results/021026.csv'
+    results_file = 'Results/15102026.csv'
     players = update_elo(ratings_file, results_file)
     save_ratings(players, ratings_file)
 
