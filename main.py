@@ -78,7 +78,7 @@ def update_elo(ratings_file, results_file):
 
 if __name__ == '__main__':
     ratings_file = 'ratings.txt'
-    results_file = 'Results/110926.csv'
+    results_file = 'Results/021026.csv'
     players = update_elo(ratings_file, results_file)
     save_ratings(players, ratings_file)
 

@@ -1,0 +1,26 @@
+Player 1-1,Player 1-2,Player 2-1,Player 2-2,Team 1 score,Team 2 score
+Daniel R,Mykolas,Miguel,Alex,10,2
+Daniel R,Mykolas,Miguel,Daniel S,10,8
+Ethan L,Deva,Daniel S,Miguel,10,7
+Ethan L,Antoine D,Daniel S,Miguel,10,1
+Ethan P,Antoine D,Ethan L,Deva,10,5
+Mykolas,Ethan L,Ethan P,Miguel,10,6
+Ethan P,Daniel R,Ethan L,Ethan L,10,8
+Ethan P,Daniel R,Ethan L,Miguel,10,7
+Daniel R,Alex,Ethan P,Miguel,10,7
+Mykolas,Alexandra V,Deva,Alex,10,8
+Mykolas,Deva,Alexandra V,Miguel,7,10
+Mykolas,Deva,Alexandra V,Miguel,10,0
+Mykolas,Daniel R,Ethan L,Alex,10,4
+Hubert H,Ethan P,Mykolas,Daniel R,10,2
+Mykolas,Deva,Miguel,Daniel S,10,6
+Ethan P,Deva,Mykolas,Miguel,10,5
+Ethan P,Mykolas,Ethan L,Miguel,10,4
+Mykolas,Daniel R,Miguel,Hubert H,10,2
+Hubert H,Miguel,Daniel R,Mykolas,10,3
+Ethan P,Mykolas,Ethan L,Miguel,10,5
+Ethan L,Miguel,Ethan P,Mykolas,10,9
+Hubert H,Deva,Mykolas,Daniel R,9,10
+Hubert H,Miguel,Daniel R,Mykolas,10,9
+Ethan P,Deva,Ethan L,Miguel,10,6
+Miguel,Deva,Antoine D,Daniel S,10,7
