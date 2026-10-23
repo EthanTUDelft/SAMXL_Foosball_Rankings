@@ -29,7 +29,7 @@ def load_results(filename):
     with open(filename, 'r') as file:
         for line in file:
             line = line.split(',')
-            if line[0] != 'Player 1-1':
+            if line[0].strip() and line[0] != 'Player 1-1':
                 results.append(line)
     return results
 
@@ -78,7 +78,7 @@ def update_elo(ratings_file, results_file):
 
 if __name__ == '__main__':
     ratings_file = 'ratings.txt'
-    results_file = 'Results/161026.csv'
+    results_file = 'Results/231026.csv'
     players = update_elo(ratings_file, results_file)
     save_ratings(players, ratings_file)
 
