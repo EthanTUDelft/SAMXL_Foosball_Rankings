@@ -1,0 +1,4 @@
+date,file,row,raw,reason
+2026-09-25,250926.csv,8,"Ethan P,Daniel R,Ethan L,Ethan L,10,8",player listed twice
+2026-10-02,021026.csv,26,"Mykolas,Deva,Daniel R,Daniel R,10,5",player listed twice
+2026-10-16,161026.csv,2,"Mykolas,Ethan L,Ethan L,Miguel,10,6",player listed twice

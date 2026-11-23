@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAMXL Foosball Analysis</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface-1: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --deemph: #c3c2b7;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --pos: #2a78d6;
+  --neg: #e34948;
+  --mid: #f0efec;
+  --hover: rgba(11,11,11,0.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface-1: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255,255,255,0.10);
+    --deemph: #4a4a46;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --pos: #3987e5;
+    --neg: #e66767;
+    --mid: #383835;
+    --hover: rgba(255,255,255,0.06);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface-1: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --text-muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255,255,255,0.10);
+  --deemph: #4a4a46;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --pos: #3987e5;
+  --neg: #e66767;
+  --mid: #383835;
+  --hover: rgba(255,255,255,0.06);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--text-primary);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+main { max-width: 1200px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 24px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+.sub { color: var(--text-secondary); margin: 0 0 24px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.tile .label { color: var(--text-secondary); font-size: 13px; }
+.tile .value { font-size: 32px; font-weight: 600; margin-top: 4px; letter-spacing: -0.01em; }
+.tile .note { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+.filters { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-bottom: 16px; color: var(--text-secondary); }
+.filters label { display: inline-flex; gap: 8px; align-items: center; }
+select, button {
+  font: inherit; color: var(--text-primary); background: var(--surface-1);
+  border: 1px solid var(--border); border-radius: 8px; padding: 4px 10px;
+}
+button { cursor: pointer; }
+button:hover { background: var(--hover); }
+.grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } .wide { grid-column: 1 / -1; } }
+figure { margin: 0; background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 16px; min-width: 0; }
+.fhead { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+figure h2 { font-size: 15px; font-weight: 600; margin: 0; }
+figcaption { color: var(--text-secondary); font-size: 13px; margin: 2px 0 12px; }
+.plot { position: relative; width: 100%; }
+.plot svg { display: block; width: 100%; height: auto; overflow: visible; }
+.tbl { overflow-x: auto; max-height: 420px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 4px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--text-secondary); font-weight: 600; position: sticky; top: 0; background: var(--surface-1); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px; font-size: 13px; color: var(--text-secondary); }
+.chip[aria-pressed="true"] { color: var(--text-primary); border-color: var(--text-muted); }
+.chip .key { width: 14px; height: 2px; border-radius: 1px; background: var(--deemph); }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; color: var(--text-secondary); font-size: 12px; margin-top: 8px; }
+.legend .ramp { width: 160px; height: 10px; border-radius: 2px; background: linear-gradient(90deg, var(--neg), var(--mid), var(--pos)); }
+.legend .ringkey { width: 12px; height: 12px; border: 1px solid var(--axis); border-radius: 2px; }
+.tick { fill: var(--text-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.lbl { fill: var(--text-secondary); font-size: 12px; }
+.lbl-strong { fill: var(--text-primary); font-size: 12px; font-weight: 600; }
+.hit { fill: transparent; cursor: default; outline: none; }
+.hit:hover, .hit:focus-visible { fill: var(--hover); }
+#tip {
+  position: fixed; pointer-events: none; z-index: 10; display: none;
+  background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 10px; font-size: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); min-width: 120px;
+}
+#tip .t-head { color: var(--text-secondary); margin-bottom: 4px; }
+#tip .t-row { display: flex; align-items: center; gap: 8px; }
+#tip .t-row b { font-weight: 600; font-variant-numeric: tabular-nums; }
+#tip .t-row span.k { width: 12px; height: 2px; border-radius: 1px; flex: none; }
+#tip .t-row span.n { color: var(--text-secondary); }
+.foot { color: var(--text-muted); font-size: 12px; margin-top: 24px; }
+.foot code { font-size: 11px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>SAMXL foosball</h1>
+  <p class="sub" id="sub"></p>
+
+  <section class="kpis" id="kpis" aria-label="Headline numbers"></section>
+
+  <div class="filters">
+    <label>Min. games played
+      <select id="minGames">
+        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="30">30</option>
+      </select>
+    </label>
+    <span id="filterNote"></span>
+  </div>
+
+  <div class="grid">
+    <figure class="wide" id="f-elo"></figure>
+    <figure id="f-win"></figure>
+    <figure id="f-gd"></figure>
+    <figure class="wide" id="f-pairs"></figure>
+    <figure id="f-cal"></figure>
+    <figure id="f-margin"></figure>
+    <figure class="wide" id="f-sessions"></figure>
+  </div>
+
+  <p class="foot" id="foot"></p>
+</main>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const D = /*__DATA__*/null;
+const NS = 'http://www.w3.org/2000/svg';
+const SLOTS = ['var(--series-1)', 'var(--series-2)', 'var(--series-3)'];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const fmtDate = iso => { const [, m, d] = iso.split('-'); return `${+d} ${MONTHS[+m - 1]}`; };
+const fmtSigned = v => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toFixed(2);
+
+const state = {
+  minGames: 10,
+  // Highlighted players keep their slot when others are toggled (colour follows the entity).
+  picked: D.players.slice(0, 3).map(p => p.player),
+};
+
+function el(tag, attrs = {}, parent) {
+  const n = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function h(tag, props = {}, parent) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (k === 'text') n.textContent = v; else n.setAttribute(k, v);
+  }
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function niceTicks(lo, hi, count) {
+  const step0 = (hi - lo) / count;
+  const mag = 10 ** Math.floor(Math.log10(step0));
+  const step = [1, 2, 2.5, 5, 10].map(s => s * mag).find(s => s >= step0);
+  const out = [];
+  for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) out.push(+v.toFixed(6));
+  return out;
+}
+// Bars: 4px rounded data-end, square at the baseline.
+function hbar(x0, x1, y, hgt, r = 4) {
+  const w = Math.abs(x1 - x0); r = Math.min(r, w, hgt / 2);
+  const s = x1 >= x0 ? 1 : -1;
+  return `M${x0},${y} H${x1 - s * r} Q${x1},${y} ${x1},${y + r} V${y + hgt - r} Q${x1},${y + hgt} ${x1 - s * r},${y + hgt} H${x0} Z`;
+}
+function vbar(x, w, yBase, yTop, r = 4) {
+  r = Math.min(r, w / 2, Math.abs(yBase - yTop));
+  return `M${x},${yBase} V${yTop + r} Q${x},${yTop} ${x + r},${yTop} H${x + w - r} Q${x + w},${yTop} ${x + w},${yTop + r} V${yBase} Z`;
+}
+
+/* ---------- tooltip ---------- */
+const tip = document.getElementById('tip');
+function showTip(evt, head, rows, anchor) {
+  tip.replaceChildren();
+  h('div', { class: 't-head', text: head }, tip);
+  for (const r of rows) {
+    const row = h('div', { class: 't-row' }, tip);
+    if (r.color) { const k = h('span', { class: 'k' }, row); k.style.background = r.color; }
+    h('b', { text: r.value }, row);
+    if (r.name) h('span', { class: 'n', text: r.name }, row);
+  }
+  tip.style.display = 'block';
+  let x, y;
+  if (evt && evt.clientX !== undefined && evt.type !== 'focus') { x = evt.clientX; y = evt.clientY; }
+  else { const b = (anchor || evt.target).getBoundingClientRect(); x = b.left + b.width / 2; y = b.top; }
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = x + 14, top = y - th - 10;
+  if (left + tw > innerWidth - 8) left = x - tw - 14;
+  if (top < 8) top = y + 16;
+  tip.style.left = Math.max(8, left) + 'px';
+  tip.style.top = top + 'px';
+}
+const hideTip = () => { tip.style.display = 'none'; };
+function hoverable(node, fn) {
+  node.setAttribute('tabindex', '0');
+  node.addEventListener('pointermove', e => fn(e));
+  node.addEventListener('focus', e => fn(e));
+  node.addEventListener('pointerleave', hideTip);
+  node.addEventListener('blur', hideTip);
+}
+
+/* ---------- figure shell with chart / table toggle ---------- */
+function shell(id, title, caption) {
+  const fig = document.getElementById(id);
+  fig.replaceChildren();
+  const head = h('div', { class: 'fhead' }, fig);
+  const titles = h('div', {}, head);
+  h('h2', { text: title }, titles);
+  h('figcaption', { text: caption }, titles);
+  const btn = h('button', { type: 'button', 'aria-pressed': fig.dataset.table === '1' ? 'true' : 'false',
+    text: fig.dataset.table === '1' ? 'Chart' : 'Table' }, head);
+  const body = h('div', {}, fig);
+  btn.addEventListener('click', () => { fig.dataset.table = fig.dataset.table === '1' ? '0' : '1'; render(); });
+  return { fig, body, showTable: fig.dataset.table === '1' };
+}
+function table(parent, cols, rows) {
+  const wrap = h('div', { class: 'tbl' }, parent);
+  const t = h('table', {}, wrap);
+  const tr = h('tr', {}, h('thead', {}, t));
+  cols.forEach(c => h('th', { text: c }, tr));
+  const tb = h('tbody', {}, t);
+  rows.forEach(r => { const row = h('tr', {}, tb); r.forEach(v => h('td', { text: String(v) }, row)); });
+}
+function svgFor(body, height) {
+  const plot = h('div', { class: 'plot' }, body);
+  const W = Math.max(280, body.clientWidth || body.parentElement.clientWidth - 32);
+  const svg = el('svg', { viewBox: `0 0 ${W} ${height}`, role: 'img' }, plot);
+  return { svg, W };
+}
+
+/* ---------- data helpers ---------- */
+const eligible = () => D.players.filter(p => p.games >= state.minGames);
+function ratingAt(hist, gid) {
+  // hist: [[game_id, rating], ...] ascending; rating after game gid.
+  if (!hist.length || hist[0][0] > gid) return null;
+  let lo = 0, hi = hist.length - 1;
+  while (lo < hi) { const m = (lo + hi + 1) >> 1; if (hist[m][0] <= gid) lo = m; else hi = m - 1; }
+  return hist[lo][1];
+}
+
+/* ---------- 1. Elo over time (emphasis) ---------- */
+function renderElo() {
+  const { body, showTable } = shell('f-elo', 'Elo rating after every game',
+    `Replayed from ${D.summary.elo.start} for everyone with the repo's formula (K=${D.summary.elo.k}, scale ${D.summary.elo.scale}, margin bonus). Pick up to three players to highlight.`);
+  const players = eligible();
+  const names = new Set(players.map(p => p.player));
+  state.picked = state.picked.map(n => (n && names.has(n) ? n : null));
+
+  const chips = h('div', { class: 'chips', role: 'group', 'aria-label': 'Highlight players' }, body);
+  for (const p of players) {
+    const slot = state.picked.indexOf(p.player);
+    const b = h('button', { type: 'button', class: 'chip', 'aria-pressed': slot >= 0 ? 'true' : 'false' }, chips);
+    const k = h('span', { class: 'key' }, b);
+    if (slot >= 0) k.style.background = SLOTS[slot];
+    b.appendChild(document.createTextNode(p.player));
+    b.addEventListener('click', () => {
+      const i = state.picked.indexOf(p.player);
+      if (i >= 0) state.picked[i] = null;
+      else { const free = state.picked.indexOf(null); if (free >= 0) state.picked[free] = p.player; else if (state.picked.length < 3) state.picked.push(p.player); }
+      render();
+    });
+  }
+
+  const N = D.game_dates.length;
+  if (showTable) {
+    table(body, ['Player', 'Current', 'Peak', 'Lowest', 'Games'],
+      players.map(p => [p.player, p.elo, p.peak_elo, p.low_elo, p.games]));
+    return;
+  }
+  const H = 360, m = { t: 12, r: 92, b: 40, l: 44 };
+  const { svg, W } = svgFor(body, H);
+  svg.setAttribute('aria-label', 'Line chart of Elo rating per player across all games');
+  const pw = W - m.l - m.r, ph = H - m.t - m.b;
+  let lo = Infinity, hi = -Infinity;
+  for (const p of players) { lo = Math.min(lo, p.low_elo); hi = Math.max(hi, p.peak_elo); }
+  lo = Math.floor((lo - 20) / 100) * 100; hi = Math.ceil((hi + 20) / 100) * 100;
+  const x = g => m.l + (g / N) * pw;
+  const y = v => m.t + ph - ((v - lo) / (hi - lo)) * ph;
+
+  for (const t of niceTicks(lo, hi, 5)) {
+    el('line', { x1: m.l, x2: m.l + pw, y1: y(t), y2: y(t), stroke: t === D.summary.elo.start ? 'var(--axis)' : 'var(--grid)', 'stroke-width': 1 }, svg);
+    el('text', { x: m.l - 8, y: y(t) + 4, 'text-anchor': 'end', class: 'tick' }, svg).textContent = t;
+  }
+  // Session boundaries as x ticks.
+  let prev = null;
+  const minGap = 34; let lastX = -Infinity;
+  D.game_dates.forEach((d, i) => {
+    if (d === prev) return; prev = d;
+    const xx = x(i);
+    el('line', { x1: xx, x2: xx, y1: m.t + ph, y2: m.t + ph + 4, stroke: 'var(--axis)' }, svg);
+    if (xx - lastX >= minGap) { el('text', { x: xx, y: m.t + ph + 18, 'text-anchor': 'start', class: 'tick' }, svg).textContent = fmtDate(d); lastX = xx; }
+  });
+  el('line', { x1: m.l, x2: m.l + pw, y1: m.t + ph, y2: m.t + ph, stroke: 'var(--axis)' }, svg);
+  el('text', { x: m.l + pw, y: H - 4, 'text-anchor': 'end', class: 'tick' }, svg).textContent = 'Game number →';
+
+  const pathFor = hist => {
+    let d = '';
+    hist.forEach(([g, r], i) => {
+      if (i === 0) d += `M${x(g)},${y(r)}`;
+      else d += `H${x(g)}V${y(r)}`;
+    });
+    return d + `H${x(N)}`;
+  };
+  // De-emphasised context first, highlighted on top.
+  for (const p of players) {
+    if (state.picked.includes(p.player)) continue;
+    el('path', { d: pathFor(D.history[p.player]), fill: 'none', stroke: 'var(--deemph)', 'stroke-width': 1, 'stroke-linejoin': 'round' }, svg);
+  }
+  const labels = [];
+  state.picked.forEach((name, slot) => {
+    if (!name) return;
+    const hist = D.history[name];
+    el('path', { d: pathFor(hist), fill: 'none', stroke: SLOTS[slot], 'stroke-width': 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, svg);
+    const last = hist[hist.length - 1][1];
+    el('circle', { cx: x(N), cy: y(last), r: 4, fill: SLOTS[slot], stroke: 'var(--surface-1)', 'stroke-width': 2 }, svg);
+    labels.push({ name, last, yy: y(last) });
+  });
+  // End labels; if two would collide, connect with a short leader.
+  labels.sort((a, b) => a.yy - b.yy);
+  for (let i = 1; i < labels.length; i++) labels[i].ly = Math.max(labels[i].yy, (labels[i - 1].ly ?? labels[i - 1].yy) + 14);
+  labels.forEach(l => {
+    const ly = l.ly ?? l.yy;
+    if (Math.abs(ly - l.yy) > 1) el('line', { x1: x(N) + 6, y1: l.yy, x2: x(N) + 12, y2: ly, stroke: 'var(--axis)' }, svg);
+    const t = el('text', { x: x(N) + 14, y: ly + 4, class: 'lbl' }, svg);
+    t.textContent = `${l.name} ${Math.round(l.last)}`;
+  });
+
+  // Crosshair + tooltip.
+  const cross = el('line', { y1: m.t, y2: m.t + ph, stroke: 'var(--text-muted)', 'stroke-width': 1, visibility: 'hidden' }, svg);
+  const hit = el('rect', { x: m.l, y: m.t, width: pw, height: ph, fill: 'transparent', tabindex: 0, 'aria-label': 'Elo plot — hover for values' }, svg);
+  const onMove = e => {
+    const r = svg.getBoundingClientRect();
+    const px = e.clientX !== undefined && e.type !== 'focus' ? (e.clientX - r.left) * (W / r.width) : m.l + pw;
+    const g = Math.max(1, Math.min(N, Math.round(((px - m.l) / pw) * N)));
+    cross.setAttribute('x1', x(g)); cross.setAttribute('x2', x(g)); cross.setAttribute('visibility', 'visible');
+    const rows = [];
+    state.picked.forEach((name, slot) => {
+      if (!name) return;
+      const v = ratingAt(D.history[name], g);
+      if (v !== null) rows.push({ color: SLOTS[slot], value: Math.round(v), name });
+    });
+    if (!rows.length) rows.push({ value: '—', name: 'pick a player above' });
+    showTip(e, `Game ${g} · ${fmtDate(D.game_dates[g - 1])}`, rows, hit);
+  };
+  hit.addEventListener('pointermove', onMove);
+  hit.addEventListener('focus', onMove);
+  const off = () => { hideTip(); cross.setAttribute('visibility', 'hidden'); };
+  hit.addEventListener('pointerleave', off);
+  hit.addEventListener('blur', off);
+}
+
+/* ---------- shared horizontal bar list ---------- */
+function hbarChart(body, rows, opts) {
+  const rowH = 28, barH = 16, m = { t: 8, r: opts.right, b: 28, l: 92 };
+  const H = m.t + rows.length * rowH + m.b;
+  const { svg, W } = svgFor(body, H);
+  svg.setAttribute('aria-label', opts.aria);
+  const pw = W - m.l - m.r;
+  const x = v => m.l + ((v - opts.min) / (opts.max - opts.min)) * pw;
+  for (const t of opts.ticks) {
+    el('line', { x1: x(t), x2: x(t), y1: m.t, y2: m.t + rows.length * rowH, stroke: t === opts.base ? 'var(--axis)' : 'var(--grid)' }, svg);
+    el('text', { x: x(t), y: H - 8, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = opts.tickFmt(t);
+  }
+  rows.forEach((r, i) => {
+    const yy = m.t + i * rowH + (rowH - barH) / 2;
+    el('text', { x: m.l - 10, y: yy + barH / 2 + 4, 'text-anchor': 'end', class: 'lbl' }, svg).textContent = r.label;
+    if (r.value !== opts.base) el('path', { d: hbar(x(opts.base), x(r.value), yy, barH), fill: r.color }, svg);
+    const pos = r.value >= opts.base;
+    el('text', { x: x(r.value) + (pos ? 6 : -6), y: yy + barH / 2 + 4, 'text-anchor': pos ? 'start' : 'end', class: 'lbl' }, svg).textContent = r.valueLabel;
+    const hit = el('rect', { x: 0, y: m.t + i * rowH, width: W, height: rowH, class: 'hit', 'aria-label': `${r.label}: ${r.valueLabel}` }, svg);
+    hoverable(hit, e => showTip(e, r.label, r.tip, hit));
+  });
+}
+
+/* ---------- 2. Win rate ---------- */
+function renderWin() {
+  const { body, showTable } = shell('f-win', 'Win rate', 'Share of games won, regardless of partner.');
+  const rows = eligible().slice().sort((a, b) => b.win_pct - a.win_pct);
+  if (showTable) { table(body, ['Player', 'Win %', 'W', 'L', 'Games'], rows.map(p => [p.player, p.win_pct, p.wins, p.losses, p.games])); return; }
+  hbarChart(body, rows.map(p => ({
+    label: p.player, value: p.win_pct, color: 'var(--series-1)', valueLabel: `${Math.round(p.win_pct)}%`,
+    tip: [{ value: `${p.win_pct}%`, name: 'win rate' }, { value: `${p.wins}–${p.losses}`, name: `W–L in ${p.games} games` }],
+  })), { min: 0, max: 100, base: 0, right: 44, ticks: [0, 25, 50, 75, 100], tickFmt: t => t + '%', aria: 'Bar chart of win rate per player' });
+}
+
+/* ---------- 3. Goal difference ---------- */
+function renderGD() {
+  const { body, showTable } = shell('f-gd', 'Goal difference per game', 'Goals scored minus conceded by your team, averaged. Blue: outscores opponents; red: gets outscored.');
+  const rows = eligible().slice().sort((a, b) => b.goal_diff_per_game - a.goal_diff_per_game);
+  if (showTable) { table(body, ['Player', 'GD / game', 'Scored', 'Conceded', 'Games'], rows.map(p => [p.player, p.goal_diff_per_game, p.goals_for, p.goals_against, p.games])); return; }
+  const ext = Math.ceil(Math.max(...rows.map(p => Math.abs(p.goal_diff_per_game)))) + 1;
+  hbarChart(body, rows.map(p => ({
+    label: p.player, value: p.goal_diff_per_game, color: p.goal_diff_per_game >= 0 ? 'var(--pos)' : 'var(--neg)', valueLabel: fmtSigned(p.goal_diff_per_game),
+    tip: [{ value: fmtSigned(p.goal_diff_per_game), name: 'goal diff / game' }, { value: `${p.goals_for}–${p.goals_against}`, name: 'goals for–against' }],
+  })), { min: -ext, max: ext, base: 0, right: 16, ticks: niceTicks(-ext, ext, 6), tickFmt: t => (t > 0 ? '+' : '') + t, aria: 'Diverging bar chart of goal difference per game' });
+}
+
+/* ---------- 4. Partnership heatmap ---------- */
+function renderPairs() {
+  const { body, showTable } = shell('f-pairs', 'Win rate by partnership',
+    'Each cell: how often the two players won when on the same team. Pairs with fewer than 3 games together are left unfilled.');
+  const players = eligible();
+  const names = players.map(p => p.player), set = new Set(names);
+  const pairs = D.partners.filter(r => set.has(r.a) && set.has(r.b));
+  if (showTable) {
+    table(body, ['Pair', 'Win %', 'W', 'Games', 'GD / game'],
+      pairs.map(r => [`${r.a} + ${r.b}`, r.win_pct, r.wins, r.games, r.goal_diff_per_game]));
+    return;
+  }
+  const lookup = new Map(pairs.map(r => [[r.a, r.b].sort().join('|'), r]));
+  const m = { t: 8, r: 8, b: 92, l: 92 };
+  const avail = Math.max(280, body.clientWidth) - m.l - m.r;
+  const cell = Math.max(18, Math.min(48, Math.floor(avail / names.length)));
+  const W = m.l + cell * names.length + m.r, H = m.t + cell * names.length + m.b;
+  const plot = h('div', { class: 'plot' }, body);
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Heatmap of win rate per teammate pair' }, plot);
+  svg.style.maxWidth = W + 'px';
+  names.forEach((n, i) => {
+    el('text', { x: m.l - 8, y: m.t + i * cell + cell / 2 + 4, 'text-anchor': 'end', class: 'lbl' }, svg).textContent = n;
+    const cx = m.l + i * cell + cell / 2, cy = m.t + names.length * cell + 8;
+    el('text', { x: cx, y: cy, transform: `rotate(-50 ${cx} ${cy})`, 'text-anchor': 'end', class: 'lbl' }, svg).textContent = n;
+  });
+  const gap = 1; // half of the 2px surface gap on each side
+  names.forEach((a, i) => names.forEach((b, j) => {
+    const cx = m.l + j * cell + gap, cy = m.t + i * cell + gap, s = cell - 2 * gap;
+    if (i === j) return;
+    const r = lookup.get([a, b].sort().join('|'));
+    if (!r) return;
+    const rect = el('rect', { x: cx, y: cy, width: s, height: s, rx: 2 }, svg);
+    const t = (r.win_pct - 50) / 50;
+    if (r.games < 3) {
+      rect.setAttribute('fill', 'none'); rect.setAttribute('stroke', 'var(--axis)');
+      rect.setAttribute('x', cx + 0.5); rect.setAttribute('y', cy + 0.5);
+      rect.setAttribute('width', s - 1); rect.setAttribute('height', s - 1);
+    } else {
+      rect.style.fill = `color-mix(in oklab, ${t >= 0 ? 'var(--pos)' : 'var(--neg)'} ${Math.round(Math.abs(t) * 100)}%, var(--mid))`;
+      if (cell >= 30) {
+        const txt = el('text', { x: cx + s / 2, y: cy + s / 2 + 4, 'text-anchor': 'middle', 'font-size': 11 }, svg);
+        txt.style.fill = Math.abs(t) > 0.55 ? '#ffffff' : 'var(--text-primary)';
+        txt.style.fontVariantNumeric = 'tabular-nums';
+        txt.textContent = Math.round(r.win_pct);
+      }
+    }
+    const hit = el('rect', { x: m.l + j * cell, y: m.t + i * cell, width: cell, height: cell, class: 'hit', 'aria-label': `${a} with ${b}: ${r.win_pct}% over ${r.games} games` }, svg);
+    hoverable(hit, e => showTip(e, `${a} + ${b}`, [
+      { value: `${r.win_pct}%`, name: 'win rate' },
+      { value: `${r.wins}–${r.games - r.wins}`, name: `W–L in ${r.games} games` },
+      { value: fmtSigned(r.goal_diff_per_game), name: 'goal diff / game' },
+    ], hit));
+  }));
+  const lg = h('div', { class: 'legend' }, body);
+  h('span', { text: '0%' }, lg); h('span', { class: 'ramp' }, lg); h('span', { text: '100% won together' }, lg);
+  const k = h('span', {}, lg); k.style.display = 'inline-flex'; k.style.gap = '6px'; k.style.alignItems = 'center';
+  h('span', { class: 'ringkey' }, k); k.appendChild(document.createTextNode('fewer than 3 games'));
+}
+
+/* ---------- 5. Elo calibration ---------- */
+function renderCal() {
+  const { body, showTable } = shell('f-cal', 'Does Elo predict the winner?',
+    'Games grouped by the favourite\'s predicted win chance (pre-game Elo) vs how often the favourite actually won. On the diagonal = well calibrated.');
+  const rows = D.calibration;
+  if (showTable) { table(body, ['Predicted bucket', 'Avg predicted', 'Actual', 'Games'], rows.map(r => [r.bin, r.predicted + '%', r.actual + '%', r.games])); return; }
+  const H = 280, m = { t: 12, r: 16, b: 40, l: 44 };
+  const { svg, W } = svgFor(body, H);
+  svg.setAttribute('aria-label', 'Calibration chart: predicted vs actual favourite win rate');
+  const pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const x = v => m.l + ((v - 50) / 50) * pw, y = v => m.t + ph - ((v - 50) / 50) * ph;
+  for (const t of [50, 60, 70, 80, 90, 100]) {
+    el('line', { x1: m.l, x2: m.l + pw, y1: y(t), y2: y(t), stroke: t === 50 ? 'var(--axis)' : 'var(--grid)' }, svg);
+    el('text', { x: m.l - 8, y: y(t) + 4, 'text-anchor': 'end', class: 'tick' }, svg).textContent = t + '%';
+    el('text', { x: x(t), y: m.t + ph + 16, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = t + '%';
+  }
+  el('text', { x: m.l + pw, y: H - 4, 'text-anchor': 'end', class: 'tick' }, svg).textContent = 'Predicted win chance of favourite →';
+  el('line', { x1: x(50), y1: y(50), x2: x(100), y2: y(100), stroke: 'var(--text-muted)', 'stroke-width': 1 }, svg);
+  el('text', { x: x(96), y: y(96) + 16, 'text-anchor': 'end', class: 'tick' }, svg).textContent = 'perfect';
+  el('path', { d: rows.map((r, i) => `${i ? 'L' : 'M'}${x(r.predicted)},${y(r.actual)}`).join(''), fill: 'none', stroke: 'var(--series-1)', 'stroke-width': 2, 'stroke-linejoin': 'round' }, svg);
+  rows.forEach((r, i) => {
+    el('circle', { cx: x(r.predicted), cy: y(r.actual), r: 5, fill: 'var(--series-1)', stroke: 'var(--surface-1)', 'stroke-width': 2 }, svg);
+    if (i === rows.length - 1) el('text', { x: x(r.predicted) - 10, y: y(r.actual) + 4, 'text-anchor': 'end', class: 'lbl-strong' }, svg).textContent = `${r.actual}% won`;
+    const hit = el('circle', { cx: x(r.predicted), cy: y(r.actual), r: 14, class: 'hit', 'aria-label': `${r.bin}: favourite won ${r.actual}%` }, svg);
+    hoverable(hit, e => showTip(e, `Favourite at ${r.bin}`, [
+      { value: `${r.actual}%`, name: 'actually won' }, { value: `${r.predicted}%`, name: 'predicted' }, { value: r.games, name: 'games' },
+    ], hit));
+  });
+}
+
+/* ---------- shared column chart ---------- */
+function colChart(body, cols, opts) {
+  const H = 240, m = { t: 20, r: 8, b: 40, l: 40 };
+  const { svg, W } = svgFor(body, H);
+  svg.setAttribute('aria-label', opts.aria);
+  const pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const max = Math.max(...cols.map(c => c.value));
+  const ticks = niceTicks(0, max, 4); const top = Math.max(max, ticks[ticks.length - 1]);
+  const y = v => m.t + ph - (v / top) * ph;
+  for (const t of ticks) {
+    el('line', { x1: m.l, x2: m.l + pw, y1: y(t), y2: y(t), stroke: t === 0 ? 'var(--axis)' : 'var(--grid)' }, svg);
+    el('text', { x: m.l - 8, y: y(t) + 4, 'text-anchor': 'end', class: 'tick' }, svg).textContent = t;
+  }
+  const band = pw / cols.length, bw = Math.min(24, band - 2);
+  const maxI = cols.findIndex(c => c.value === max);
+  cols.forEach((c, i) => {
+    const bx = m.l + i * band + (band - bw) / 2;
+    el('path', { d: vbar(bx, bw, y(0), y(c.value)), fill: 'var(--series-1)' }, svg);
+    // Thin out x labels when the bands are too narrow for them.
+    const every = Math.ceil((c.label.length * 6.5 + 6) / band);
+    if (i % every === 0) el('text', { x: bx + bw / 2, y: H - m.b + 16, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = c.label;
+    if (i === maxI || (opts.labelAll && band >= 28)) el('text', { x: bx + bw / 2, y: y(c.value) - 6, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = c.value;
+    const hit = el('rect', { x: m.l + i * band, y: m.t, width: band, height: ph, class: 'hit', 'aria-label': `${c.label}: ${c.value}` }, svg);
+    hoverable(hit, e => showTip(e, c.head, c.tip, hit));
+  });
+  el('text', { x: m.l + pw, y: H - 4, 'text-anchor': 'end', class: 'tick' }, svg).textContent = opts.xTitle;
+}
+
+/* ---------- 6. How close are games ---------- */
+function renderMargin() {
+  const { body, showTable } = shell('f-margin', 'How close are the games?', 'Games by the losing team\'s final score (first to 10 wins).');
+  const total = D.loser_scores.reduce((a, b) => a + b, 0);
+  if (showTable) { table(body, ["Loser's score", 'Games', 'Share'], D.loser_scores.map((n, s) => [`10–${s}`, n, (100 * n / total).toFixed(1) + '%'])); return; }
+  colChart(body, D.loser_scores.map((n, s) => ({
+    label: String(s), value: n, head: `Finished 10–${s}`,
+    tip: [{ value: n, name: 'games' }, { value: (100 * n / total).toFixed(1) + '%', name: 'of all games' }],
+  })), { xTitle: "Loser's score →", aria: 'Column chart of games by losing score' });
+}
+
+/* ---------- 7. Sessions ---------- */
+function renderSessions() {
+  const { body, showTable } = shell('f-sessions', 'Games per session', 'Each results file is one session.');
+  if (showTable) { table(body, ['Date', 'Games', 'Players', 'Avg margin', 'Upsets'], D.sessions.map(s => [s.date, s.games, s.players, s.avg_margin, s.upsets])); return; }
+  colChart(body, D.sessions.map(s => ({
+    label: fmtDate(s.date), value: s.games, head: fmtDate(s.date),
+    tip: [{ value: s.games, name: 'games' }, { value: s.players, name: 'players' }, { value: s.avg_margin, name: 'avg winning margin' }, { value: s.upsets, name: 'upsets' }],
+  })), { xTitle: '', labelAll: true, aria: 'Column chart of games per session' });
+}
+
+/* ---------- header, KPIs, footer ---------- */
+function renderStatic() {
+  const s = D.summary;
+  document.getElementById('sub').textContent = `${fmtDate(s.first)} – ${fmtDate(s.last)} ${s.last.slice(0, 4)} · ${s.sessions} sessions · every result file in Results/`;
+  const k = document.getElementById('kpis');
+  const top = D.players[0];
+  const busiest = D.players.slice().sort((a, b) => b.games - a.games)[0];
+  const tiles = [
+    ['Games played', s.games, `${(s.games / s.sessions).toFixed(1)} per session`],
+    ['Players', s.players, `${D.players.filter(p => p.games >= 10).length} with 10+ games`],
+    ['Highest Elo', top.elo, top.player],
+    ['Most games', busiest.games, busiest.player],
+    ['Upsets', `${Math.round(100 * s.upsets / s.games)}%`, `${s.upsets} games won by the Elo underdog`],
+  ];
+  for (const [label, value, note] of tiles) {
+    const t = h('div', { class: 'tile' }, k);
+    h('div', { class: 'label', text: label }, t);
+    h('div', { class: 'value', text: value }, t);
+    h('div', { class: 'note', text: note }, t);
+  }
+  const f = document.getElementById('foot');
+  f.textContent = `${s.rejected} result row(s) were skipped because a player was listed twice in one game: ` +
+    D.rejected.map(r => `${r.file} row ${r.row}`).join(', ') + '. Generated by Analysis_by_claude/analyze.py.';
+}
+
+function render() {
+  const n = eligible().length;
+  document.getElementById('filterNote').textContent = `${n} of ${D.players.length} players shown`;
+  renderElo(); renderWin(); renderGD(); renderPairs(); renderCal(); renderMargin(); renderSessions();
+}
+
+document.getElementById('minGames').addEventListener('change', e => { state.minGames = +e.target.value; render(); });
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 120); });
+renderStatic();
+render();
+</script>
+</body>
+</html>

@@ -1,12 +1,12 @@
-Ethan L,1245
-Ethan P,1215
+Ethan L,1349
+Ethan P,1202
 Daniel S,536
 Hubert H,1273
 Alexandra V,839
-Antoine D,1194
-Mykolas,1197
-Deva,1068
+Antoine D,1169
+Mykolas,1130
+Deva,1049
 Adam,809
-Alex,746
-Miguel,870
-Grégoire,966
+Alex,732
+Miguel,984
+Grégoire,883

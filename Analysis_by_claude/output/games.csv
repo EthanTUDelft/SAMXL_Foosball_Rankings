@@ -1,0 +1,251 @@
+id,date,team1_p1,team1_p2,team2_p1,team2_p2,score1,score2,team1_elo,team2_elo,team1_win_prob,team1_elo_change,upset
+1,2026-08-07,Ethan L,Daniel R,Antoine D,Alexandra V,10,2,1000.0,1000.0,0.5,24.32,False
+2,2026-08-07,Ethan P,Mykolas,Daniel R,Daniel S,3,10,1000.0,1012.2,0.486,-23.12,False
+3,2026-08-07,Ethan L,Alexandra V,Daniel R,Daniel S,5,10,1000.0,1035.3,0.4595,-20.62,False
+4,2026-08-07,Hubert H,Mykolas,Daniel R,Ethan P,4,10,988.4,1022.5,0.4609,-21.36,False
+5,2026-08-07,Antoine D,Hubert H,Mykolas,Badr,10,3,977.2,977.8,0.4993,23.82,True
+6,2026-08-07,Hubert H,Semawit,Antoine D,Mykolas,8,10,1001.2,965.6,0.5409,-20.31,True
+7,2026-08-07,Hubert H,Deva,Antoine D,Semawit,10,4,991.1,999.7,0.49,23.63,True
+8,2026-08-07,Antoine D,Deva,Ethan L,Daniel S,10,5,1009.9,1023.7,0.4841,23.15,True
+9,2026-08-07,Ethan L,Ethan P,Daniel S,Mykolas,10,1,989.4,986.3,0.5036,24.61,False
+10,2026-08-07,Ethan P,Alexandra V,Ethan L,Antoine D,10,4,989.0,1012.2,0.4732,24.41,True
+11,2026-08-07,Hubert H,Daniel S,Deva,Ethan P,10,3,1000.9,1047.0,0.4471,26.3,True
+12,2026-08-07,Hubert H,Alexandra V,Daniel R,Deva,10,7,1005.8,1054.9,0.4436,22.69,True
+13,2026-08-07,Ethan P,Alexandra V,Ethan L,Mykolas,6,10,1011.6,954.1,0.5658,-24.38,True
+14,2026-08-07,Ethan P,Mykolas,Deva,Ethan L,10,2,974.2,1001.5,0.4686,25.84,True
+15,2026-08-14,Hubert H,Deva,Ethan L,Mykolas,10,9,1013.4,978.5,0.5401,14.72,False
+16,2026-08-14,Ethan L,Daniel S,Deva,Hubert H,10,7,993.4,1028.1,0.4602,22.02,True
+17,2026-08-14,Hubert H,Deva,Daniel S,Mykolas,10,3,1006.1,1003.6,0.5028,23.65,False
+18,2026-08-14,Hubert H,Mykolas,Daniel S,Deva,10,4,1005.2,1004.5,0.5008,23.13,False
+19,2026-08-14,Hubert H,Daniel S,Deva,Mykolas,10,5,1045.9,963.8,0.5934,18.25,False
+20,2026-08-14,Deva,Daniel S,Alexandra V,Mykolas,10,5,981.3,961.0,0.5234,21.39,False
+21,2026-08-14,Ethan L,Mykolas,Alexandra V,Ethan P,10,3,954.7,989.4,0.4601,25.68,True
+22,2026-08-14,Ethan P,Mykolas,Ethan L,Daniel S,10,7,972.6,1024.7,0.4403,22.83,True
+23,2026-08-14,Hubert H,Mykolas,Daniel S,Ethan P,10,3,1041.9,1016.9,0.5287,22.42,False
+24,2026-08-14,Mykolas,Ethan P,Hubert H,Daniel S,10,8,995.4,1063.4,0.4224,21.69,True
+25,2026-08-14,Hubert H,Deva,Ethan L,Alexandra V,10,3,1040.8,960.1,0.5918,19.42,False
+26,2026-08-14,Hubert H,Alexandra V,Ethan L,Deva,10,2,1022.0,978.9,0.5495,21.91,False
+27,2026-08-14,Ethan P,Mykolas,Deva,Hubert H,10,4,1017.1,1060.2,0.4506,25.46,True
+28,2026-08-14,Hubert H,Mykolas,Ethan P,Deva,10,7,1085.0,992.3,0.6051,16.11,False
+29,2026-08-14,Ethan P,Mykolas,Ethan L,Deva,10,9,1042.6,936.2,0.6201,12.16,False
+30,2026-08-21,Mykolas,Daniel R,Ethan P,Adam,10,1,1067.9,1020.2,0.5547,22.07,False
+31,2026-08-21,Daniel S,Ethan L,Ethan P,Deva,10,9,953.1,965.2,0.4861,16.45,True
+32,2026-08-21,Mykolas,Daniel S,Daniel R,Adam,10,9,1038.9,1033.4,0.5064,15.8,False
+33,2026-08-21,Ethan P,Ethan L,Daniel R,Daniel S,10,4,977.1,1037.7,0.4307,26.38,True
+34,2026-08-21,Ethan P,Ethan L,Daniel R,Daniel S,10,6,1003.5,1011.3,0.491,21.93,True
+35,2026-08-21,Mykolas,Ethan P,Ethan L,Daniel R,10,9,1078.6,1012.7,0.5752,13.59,False
+36,2026-08-21,Antoine D,Deva,Mykolas,Daniel S,10,5,945.3,1037.4,0.3956,27.12,True
+37,2026-08-21,Ethan L,Ethan P,Daniel S,Antoine D,10,8,1025.4,974.5,0.5583,16.58,False
+38,2026-08-21,Antoine D,Daniel S,Deva,Mykolas,10,7,957.9,1008.1,0.4425,22.74,True
+39,2026-08-21,Daniel R,Daniel S,Ethan P,Mykolas,10,8,972.1,1075.5,0.3832,23.16,True
+40,2026-08-21,Mykolas,Ethan L,Ethan P,Deva,10,5,1025.6,978.6,0.5539,20.02,False
+41,2026-08-21,Ethan L,Deva,Daniel R,Mykolas,10,8,951.9,1050.9,0.3879,22.98,True
+42,2026-08-21,Ethan P,Ethan L,Daniel R,Antoine D,10,2,1041.9,1019.7,0.5255,23.08,False
+43,2026-08-21,Mykolas,Antoine D,Ethan P,Deva,10,4,1024.9,981.6,0.5496,20.87,False
+44,2026-08-28,Ethan L,Daniel S,Ethan P,Mykolas,10,7,1013.1,1052.4,0.4548,22.24,True
+45,2026-08-28,Ethan P,Deva,Daniel S,Mykolas,10,5,949.6,1010.9,0.4299,25.58,True
+46,2026-08-28,Ethan L,Daniel R,Ethan P,Deva,10,4,1040.1,975.2,0.5742,19.73,False
+47,2026-08-28,Ethan L,Daniel R,Mykolas,Daniel S,10,9,1059.8,985.3,0.585,13.28,False
+48,2026-08-28,Mykolas,Daniel R,Ethan L,Deva,10,6,1012.8,1006.5,0.5072,21.23,False
+49,2026-08-28,Mykolas,Daniel R,Alexandra V,Ethan L,10,7,1034.0,1018.5,0.5178,19.67,False
+50,2026-08-28,Hubert H,Alexandra V,Ethan P,Deva,10,7,1029.4,944.8,0.5961,16.47,False
+51,2026-08-28,Hubert H,Daniel R,Ethan P,Ethan L,10,8,1111.9,1045.3,0.5761,15.92,False
+52,2026-08-28,Deva,Mykolas,Daniel R,Daniel S,10,6,947.8,1008.9,0.4301,24.56,True
+53,2026-08-28,Daniel R,Mykolas,Adam,Ethan P,10,4,1061.6,976.3,0.5969,18.68,False
+54,2026-08-28,Mykolas,Hubert H,Daniel R,Deva,10,6,1133.0,973.5,0.6759,13.97,False
+55,2026-08-28,Mykolas,Deva,Daniel R,Adam,10,4,981.6,1000.8,0.478,24.19,True
+56,2026-08-28,Daniel R,Daniel S,Deva,Mykolas,10,8,974.6,1005.8,0.4641,20.12,True
+57,2026-08-28,Daniel R,Daniel S,Deva,Mykolas,10,8,994.7,985.7,0.5103,18.38,False
+58,2026-08-28,Hubert H,Daniel R,Ethan L,Ethan P,10,8,1132.0,1020.1,0.6261,14.04,False
+59,2026-08-28,Hubert H,Deva,Mykolas,Alexandra V,10,7,1026.1,1009.1,0.5196,19.6,False
+60,2026-08-28,Mykolas,Antoine D,Adam,Daniel S,10,3,1047.3,936.5,0.6249,17.84,False
+61,2026-08-28,Mykolas,Ethan P,Deva,Daniel S,10,7,1022.1,901.0,0.636,14.85,False
+62,2026-08-28,Hubert H,Ethan P,Mykolas,Deva,10,4,1099.0,976.3,0.6376,16.79,False
+63,2026-08-28,Ethan P,Ethan L,Hubert H,Mykolas,10,9,1021.8,1163.2,0.3428,21.03,True
+64,2026-09-04,Alexandra V,Deva,Daniel S,Mykolas,10,9,872.5,992.2,0.3656,20.3,True
+65,2026-09-04,Ethan L,Deva,Alexandra V,Daniel S,10,5,965.0,915.7,0.5565,19.9,False
+66,2026-09-04,Hubert H,Ethan P,Deva,Mykolas,10,2,1115.7,958.9,0.6731,15.9,False
+67,2026-09-04,Antoine D,Deva,Ethan L,Adam,10,5,951.3,998.3,0.4462,24.85,True
+68,2026-09-04,Antoine D,Mykolas,Daniel R,Deva,10,2,1047.9,985.1,0.5719,20.82,False
+69,2026-09-04,Antoine D,Mykolas,Daniel R,Deva,10,9,1068.8,964.3,0.618,12.22,False
+70,2026-09-04,Hubert H,Daniel R,Daniel S,Mykolas,10,2,1145.2,970.5,0.6909,15.03,False
+71,2026-09-04,Mykolas,Hubert H,Adam,Alexandra V,10,1,1148.6,893.7,0.7638,11.71,False
+72,2026-09-04,Hubert H,Alexandra V,Deva,Alex,10,2,1081.4,925.3,0.6723,15.94,False
+73,2026-09-04,Hubert H,Alexandra V,Ethan P,Mykolas,10,7,1097.3,1041.7,0.5637,17.8,False
+74,2026-09-04,Hubert H,Alexandra V,Mykolas,Deva,10,7,1115.1,936.9,0.6944,12.47,False
+75,2026-09-11,Mykolas,Deva,Hubert H,Daniel R,3,10,924.4,1189.2,0.2281,-10.85,False
+76,2026-09-11,Hubert H,Ethan L,Daniel R,Deva,10,5,1195.5,945.4,0.7598,10.78,False
+77,2026-09-11,Ethan P,Miguel,Ethan L,Deva,10,7,1004.3,940.8,0.5726,17.43,False
+78,2026-09-11,Hubert H,Daniel R,Aydin,Adam,10,8,1200.0,932.4,0.7742,8.48,False
+79,2026-09-11,Mykolas,Miguel,Alex,Daniel S,10,4,1016.6,924.9,0.6041,18.35,False
+80,2026-09-11,Ethan P,Daniel S,Mykolas,Alex,10,7,936.7,999.9,0.4277,23.34,True
+81,2026-09-11,Ethan P,Daniel S,Alexandra V,Mykolas,10,5,960.1,978.1,0.4793,23.37,True
+82,2026-09-11,Hubert H,Ethan L,Miguel,Alexandra V,10,3,1201.8,978.9,0.7362,12.55,False
+83,2026-09-11,Ethan L,Ethan P,Miguel,Daniel S,10,3,1074.5,958.7,0.6302,17.59,False
+84,2026-09-11,Daniel R,Miguel,Hubert H,Daniel S,10,9,1041.4,1114.5,0.4166,18.67,True
+85,2026-09-11,Alexandra V,Deva,Mykolas,Miguel,10,8,846.3,1005.9,0.3241,25.38,True
+86,2026-09-11,Hubert H,Daniel R,Ethan L,Ethan P,10,7,1214.8,1092.0,0.6376,14.78,False
+87,2026-09-11,Ethan L,Miguel,Antoine D,Deva,10,9,1038.9,955.1,0.5953,12.95,False
+88,2026-09-11,Ethan P,Deva,Daniel S,Alexandra V,10,6,935.6,896.3,0.5451,19.6,False
+89,2026-09-11,Ethan L,Alexandra V,Ethan P,Deva,10,8,1003.5,955.2,0.5555,16.69,False
+90,2026-09-11,Antoine D,Alexandra V,Ethan P,Deva,10,9,1010.3,938.5,0.582,13.38,False
+91,2026-09-11,Deva,Miguel,Ethan P,Daniel S,10,6,898.5,951.7,0.4391,24.17,True
+92,2026-09-18,Hubert H,Ethan L,Daniel R,Mykolas,10,8,1228.6,1036.3,0.708,10.96,False
+93,2026-09-18,Alexandra V,Daniel S,Miguel,Alex,10,8,879.7,989.2,0.3765,23.41,True
+94,2026-09-18,Ethan L,Deva,Alexandra V,Daniel R,10,7,964.4,1034.1,0.4205,23.64,True
+95,2026-09-18,Ethan L,Hubert H,Ethan P,Alex,10,7,1251.4,980.0,0.7773,9.08,False
+96,2026-09-18,Mykolas,Miguel,Deva,Daniel S,10,9,981.9,835.2,0.6627,10.79,False
+97,2026-09-18,Ethan P,Daniel R,Alexandra V,Mykolas,10,0,1053.9,953.5,0.6136,19.48,False
+98,2026-09-18,Mykolas,Daniel R,Antoine D,Alexandra V,10,2,1018.9,1013.8,0.5058,24.03,False
+99,2026-09-18,Ethan L,Ethan P,Daniel R,Hubert H,10,6,1101.8,1244.0,0.3419,28.36,True
+100,2026-09-18,Miguel,Antoine D,Alexandra V,Mykolas,10,3,1050.8,934.0,0.6313,17.54,False
+101,2026-09-18,Hubert H,Deva,Daniel R,Mykolas,10,8,1081.2,1020.0,0.57,16.14,False
+102,2026-09-18,Hubert H,Miguel,Mykolas,Ethan P,10,9,1198.7,1006.2,0.7081,9.34,False
+103,2026-09-18,Antoine D,Miguel,Ethan L,Mykolas,10,9,1073.0,1052.0,0.5241,15.23,False
+104,2026-09-18,Mykolas,Miguel,Alexandra V,Daniel R,10,8,986.9,979.4,0.5086,18.45,False
+105,2026-09-18,Mykolas,Miguel,Alexandra V,Daniel R,10,4,1005.3,961.0,0.5509,20.81,False
+106,2026-09-18,Ethan L,Mykolas,Miguel,Ethan P,10,9,1056.4,1087.6,0.4642,17.15,True
+107,2026-09-18,Ethan L,Ethan P,Daniel R,Alex,10,9,1117.9,972.8,0.6611,10.84,False
+108,2026-09-18,Ethan L,Antoine D,Daniel R,Miguel,10,3,1152.1,1056.2,0.6087,18.61,False
+109,2026-09-18,Alex,Daniel R,Mykolas,Miguel,10,1,952.6,1016.8,0.4266,28.43,True
+110,2026-09-18,Ethan L,Miguel,Mykolas,Hubert H,10,9,1126.3,1151.0,0.4717,16.91,True
+111,2026-09-18,Ethan L,Miguel,Daniel R,Alex,10,7,1143.2,981.0,0.6785,13.11,False
+112,2026-09-18,Hubert H,Deva,Daniel R,Mykolas,10,5,1093.5,970.4,0.6381,16.24,False
+113,2026-09-18,Mykolas,Daniel R,Deva,Hubert H,10,8,954.2,1109.8,0.3281,25.23,True
+114,2026-09-18,Mykolas,Daniel R,Deva,Hubert H,10,8,979.4,1084.6,0.3812,23.23,True
+115,2026-09-18,Hubert H,Mykolas,Daniel S,Miguel,10,0,1134.1,948.7,0.7014,15.06,False
+116,2026-09-18,Ethan P,Deva,Miguel,Ethan L,10,8,935.1,1148.8,0.272,27.33,True
+117,2026-09-18,Hubert H,Antoine D,Ethan L,Ethan P,10,7,1230.6,1153.0,0.5883,16.79,False
+118,2026-09-18,Mykolas,Daniel R,Hubert H,Deva,10,2,1010.1,1090.9,0.4081,28.79,True
+119,2026-09-18,Mykolas,Daniel R,Hubert H,Deva,10,9,1038.9,1062.1,0.4733,16.85,True
+120,2026-09-18,Ethan P,Miguel,Mykolas,Ethan L,10,8,1051.4,1105.1,0.4386,21.08,True
+121,2026-09-18,Antoine D,Miguel,Ethan L,Daniel S,10,8,1097.8,994.2,0.617,14.38,False
+122,2026-09-18,Mykolas,Deva,Ethan P,Alex,10,5,889.4,1005.0,0.37,28.27,True
+123,2026-09-18,Deva,Ethan P,Ethan L,Mykolas,10,6,941.7,1090.9,0.3347,28.67,True
+124,2026-09-18,Mykolas,Miguel,Alexandra V,Daniel R,10,9,1027.2,972.0,0.5632,13.98,False
+125,2026-09-18,Miguel,Daniel R,Ethan L,Deva,10,6,1081.5,989.2,0.6047,17.03,False
+126,2026-09-18,Ethan P,Mykolas,Antoine D,Deva,10,9,1050.4,994.2,0.5644,13.94,False
+127,2026-09-18,Mykolas,Ethan L,Miguel,Ethan P,10,5,1067.7,1102.4,0.4602,24.23,True
+128,2026-09-25,Daniel R,Mykolas,Miguel,Alex,10,2,1072.6,978.3,0.607,19.12,False
+129,2026-09-25,Daniel R,Mykolas,Miguel,Daniel S,10,8,1091.8,924.3,0.6838,11.87,False
+130,2026-09-25,Ethan L,Deva,Daniel S,Miguel,10,7,977.3,912.4,0.5742,17.37,False
+131,2026-09-25,Ethan L,Antoine D,Daniel S,Miguel,10,1,1152.5,895.1,0.766,11.6,False
+132,2026-09-25,Ethan P,Antoine D,Ethan L,Deva,10,5,1122.1,1000.5,0.6364,16.32,False
+133,2026-09-25,Mykolas,Ethan L,Ethan P,Miguel,10,6,1113.7,1056.3,0.5657,18.71,False
+134,2026-09-25,Ethan P,Daniel R,Ethan L,Miguel,10,7,1108.4,1082.1,0.5303,19.16,False
+135,2026-09-25,Daniel R,Alex,Ethan P,Miguel,10,7,1009.8,1037.6,0.468,21.7,True
+136,2026-09-25,Mykolas,Alexandra V,Deva,Alex,10,8,961.6,851.7,0.6239,14.12,False
+137,2026-09-25,Mykolas,Deva,Alexandra V,Miguel,7,10,953.7,897.9,0.5638,-23.0,True
+138,2026-09-25,Mykolas,Deva,Alexandra V,Miguel,10,0,930.7,920.9,0.5112,24.64,False
+139,2026-09-25,Mykolas,Daniel R,Ethan L,Alex,10,4,1141.3,1013.9,0.6426,16.56,False
+140,2026-09-25,Hubert H,Ethan P,Mykolas,Daniel R,10,2,1191.8,1157.9,0.539,22.42,False
+141,2026-09-25,Mykolas,Deva,Miguel,Daniel S,10,6,952.4,852.9,0.6126,16.69,False
+142,2026-09-25,Ethan P,Deva,Mykolas,Miguel,10,5,961.1,1025.9,0.426,25.76,True
+143,2026-09-25,Ethan P,Mykolas,Ethan L,Miguel,10,4,1111.2,1021.7,0.6016,18.46,False
+144,2026-09-25,Mykolas,Daniel R,Miguel,Hubert H,10,2,1140.1,1106.8,0.5383,22.46,False
+145,2026-09-25,Hubert H,Miguel,Daniel R,Mykolas,10,3,1084.4,1162.6,0.4109,28.02,True
+146,2026-09-25,Ethan P,Mykolas,Ethan L,Miguel,10,5,1126.9,1006.1,0.6356,16.35,False
+147,2026-09-25,Ethan L,Miguel,Ethan P,Mykolas,10,9,989.7,1143.2,0.3303,21.43,True
+148,2026-09-25,Hubert H,Deva,Mykolas,Daniel R,9,10,1087.8,1132.0,0.4492,-14.37,False
+149,2026-09-25,Hubert H,Miguel,Daniel R,Mykolas,10,9,1107.7,1146.4,0.4556,17.42,True
+150,2026-09-25,Ethan P,Deva,Ethan L,Miguel,10,6,986.4,1019.9,0.4615,23.2,True
+151,2026-09-25,Miguel,Deva,Antoine D,Daniel S,10,7,873.4,957.2,0.4047,24.28,True
+152,2026-10-02,Ethan P,Daniel S,Miguel,Mykolas,10,8,940.5,1007.9,0.4231,21.66,True
+153,2026-10-02,Mykolas,Hubert H,Daniel S,Miguel,10,5,1205.2,816.5,0.8569,6.42,False
+154,2026-10-02,Mykolas,Ethan P,Ethan L,Hubert H,10,8,1135.1,1220.2,0.4033,22.4,True
+155,2026-10-02,Mykolas,Ethan P,Ethan L,Miguel,10,9,1157.5,983.6,0.6902,9.91,False
+156,2026-10-02,Mykolas,Antoine D,Miguel,Ethan L,10,2,1132.8,973.6,0.6755,15.78,False
+157,2026-10-02,Antoine D,Daniel S,Deva,Miguel,10,6,948.4,870.8,0.5884,17.74,False
+158,2026-10-02,Mykolas,Ethan P,Ethan L,Miguel,10,2,1175.3,949.0,0.7393,12.68,False
+159,2026-10-02,Mykolas,Ethan L,Miguel,Ethan P,10,3,1091.5,1032.8,0.5671,20.59,False
+160,2026-10-02,Hubert H,Daniel R,Mykolas,Ethan L,10,4,1238.8,1112.1,0.6419,16.59,False
+161,2026-10-02,Ethan L,Ethan P,Hubert H,Daniel R,10,4,1127.5,1255.4,0.3568,29.8,True
+162,2026-10-02,Ethan P,Daniel R,Ethan L,Mykolas,10,2,1194.0,1110.4,0.5951,19.69,False
+163,2026-10-02,Ethan L,Daniel R,Mykolas,Ethan P,10,4,1109.8,1194.6,0.4036,27.63,True
+164,2026-10-02,Ethan L,Deva,Mykolas,Daniel S,10,9,970.6,924.4,0.553,14.31,False
+165,2026-10-02,Mykolas,Ethan L,Deva,Daniel S,10,1,1090.7,804.3,0.789,10.46,False
+166,2026-10-02,Mykolas,Deva,Ethan L,Miguel,10,9,980.2,959.3,0.5241,15.23,False
+167,2026-10-02,Mykolas,Alex,Daniel S,Miguel,10,7,984.9,760.6,0.7375,10.71,False
+168,2026-10-02,Mykolas,Deva,Miguel,Antoine D,10,8,1000.8,985.4,0.5178,18.1,False
+169,2026-10-02,Daniel R,Deva,Mykolas,Daniel S,10,6,1045.6,926.8,0.6335,15.79,False
+170,2026-10-02,Mykolas,Daniel S,Daniel R,Antoine D,10,9,911.0,1187.8,0.2185,25.01,True
+171,2026-10-02,Ethan P,Ethan L,Daniel R,Mykolas,10,4,1162.0,1167.2,0.494,23.44,True
+172,2026-10-02,Deva,Daniel R,Ethan P,Mykolas,10,3,1037.2,1191.7,0.3293,31.91,True
+173,2026-10-02,Daniel S,Ethan P,Daniel R,Mykolas,10,6,973.6,1143.8,0.3135,29.58,True
+174,2026-10-02,Mykolas,Daniel R,Daniel S,Ethan P,10,3,1114.2,1003.2,0.6251,17.83,False
+175,2026-10-02,Mykolas,Daniel R,Deva,Daniel S,10,0,1132.1,839.4,0.7937,10.4,False
+176,2026-10-02,Mykolas,Deva,Daniel S,Daniel R,10,6,1013.8,957.7,0.5643,18.77,False
+177,2026-10-02,Mykolas,Daniel R,Daniel S,Miguel,10,0,1142.5,736.7,0.8663,6.74,False
+178,2026-10-02,Mykolas,Miguel,Deva,Daniel R,10,5,940.3,1066.6,0.3586,28.78,True
+179,2026-10-02,Deva,Miguel,Ethan P,Ethan L,10,6,857.7,1175.4,0.188,34.99,True
+180,2026-10-02,Mykolas,Miguel,Alex,Daniel S,10,2,986.6,783.3,0.7183,13.7,False
+181,2026-10-02,Mykolas,Ethan L,Ethan P,Miguel,10,4,1120.0,1020.6,0.6125,17.96,False
+182,2026-10-02,Mykolas,Daniel R,Antoine D,Ethan P,10,7,1165.0,1162.3,0.5031,20.27,False
+183,2026-10-02,Mykolas,Miguel,Daniel R,Antoine D,10,8,1010.4,1145.9,0.3489,24.45,True
+184,2026-10-02,Daniel R,Deva,Mykolas,Ethan P,10,5,1053.2,1193.7,0.3437,29.45,True
+185,2026-10-15,Ethan P,Deva,Ethan L,Daniel S,10,5,1061.6,890.6,0.6873,14.03,False
+186,2026-10-15,Ethan L,Mykolas,Miguel,Daniel S,10,4,1138.6,758.1,0.8523,6.85,False
+187,2026-10-15,Ethan P,Ethan L,Deva,Daniel R,10,8,1119.0,1089.7,0.5337,17.51,False
+188,2026-10-15,Mykolas,Daniel S,Deva,Alex,10,4,932.3,920.3,0.5138,22.53,False
+189,2026-10-15,Mykolas,Deva,Alex,Daniel S,10,1,1093.3,759.2,0.8233,8.76,False
+190,2026-10-15,Mykolas,Deva,Miguel,Daniel R,10,9,1102.1,998.9,0.6166,12.27,False
+191,2026-10-15,Ethan P,Daniel R,Miguel,Deva,10,7,1156.1,905.4,0.7603,9.78,False
+192,2026-10-15,Antoine D,Miguel,Deva,Ethan P,10,9,956.6,1074.9,0.3671,20.25,True
+193,2026-10-15,Ethan P,Ethan L,Daniel R,Hubert H,10,8,1131.3,1230.5,0.3877,22.99,True
+194,2026-10-15,Mykolas,Ethan L,Ethan P,Miguel,10,7,1187.5,1007.8,0.6959,12.41,False
+195,2026-10-15,Antoine D,Deva,Daniel S,Miguel,10,3,1035.2,751.0,0.7873,10.12,False
+196,2026-10-15,Mykolas,Deva,Daniel S,Miguel,10,1,1110.6,740.9,0.8459,7.64,False
+197,2026-10-15,Deva,Miguel,Daniel S,Mykolas,10,7,889.5,962.1,0.4172,23.77,True
+198,2026-10-15,Antoine D,Miguel,Mykolas,Daniel S,10,8,978.7,938.3,0.5463,17.03,False
+199,2026-10-15,Antoine D,Miguel,Mykolas,Deva,10,4,995.7,1109.8,0.3716,29.11,True
+200,2026-10-15,Mykolas,Miguel,Daniel S,Ethan L,10,7,1036.0,880.6,0.6716,13.4,False
+201,2026-10-15,Ethan P,Deva,Mykolas,Adam,10,6,1066.1,1032.3,0.5388,19.87,False
+202,2026-10-15,Mykolas,Ethan P,Deva,Miguel,10,8,1187.0,938.4,0.7586,9.06,False
+203,2026-10-15,Ethan P,Mykolas,Miguel,Deva,10,9,1196.1,929.3,0.7736,7.25,False
+204,2026-10-15,Ethan P,Miguel,Mykolas,Daniel R,10,9,1038.1,1169.0,0.3537,20.68,True
+205,2026-10-15,Ethan P,Miguel,Mykolas,Daniel R,10,4,1058.8,1148.3,0.3983,27.88,True
+206,2026-10-15,Daniel R,Deva,Antoine D,Mykolas,10,8,1027.4,1164.4,0.3473,24.51,True
+207,2026-10-15,Ethan P,Deva,Daniel R,Miguel,10,4,1122.5,1016.0,0.6203,17.59,False
+208,2026-10-15,Mykolas,Adam,Miguel,Daniel S,10,9,984.1,755.2,0.7416,8.27,False
+209,2026-10-15,Ethan P,Ethan L,Miguel,Daniel S,10,5,1198.7,746.9,0.889,4.98,False
+210,2026-10-15,Mykolas,Deva,Ethan P,Adam,10,6,1076.0,1059.0,0.5196,20.7,False
+211,2026-10-15,Mykolas,Miguel,Ethan P,Deva,10,8,1026.2,1142.6,0.3691,23.69,True
+212,2026-10-15,Ethan P,Deva,Mykolas,Miguel,10,8,1118.9,1049.9,0.5788,15.81,False
+213,2026-10-15,Ethan P,Miguel,Mykolas,Deva,10,5,1072.1,1096.7,0.4718,23.7,True
+214,2026-10-15,Antoine D,Deva,Ethan P,Miguel,10,8,1074.7,1095.8,0.4756,19.69,True
+215,2026-10-15,Ethan P,Deva,Ethan L,Miguel,10,4,1134.7,1019.0,0.6302,17.14,False
+216,2026-10-15,Antoine D,Ethan P,Ethan L,Miguel,10,6,1216.7,1001.9,0.729,11.68,False
+217,2026-10-15,Mykolas,Miguel,Deva,Alex,10,2,1009.8,930.9,0.5899,19.94,False
+218,2026-10-15,Mykolas,Alex,Deva,Miguel,10,4,984.2,956.5,0.5319,21.69,False
+219,2026-10-15,Mykolas,Antoine D,Miguel,Alex,10,4,1182.9,849.3,0.8229,8.2,False
+220,2026-10-15,Antoine D,Ethan L,Ethan P,Mykolas,10,6,1146.5,1236.0,0.3985,25.92,True
+221,2026-10-15,Ethan L,Miguel,Mykolas,Deva,10,8,998.2,1082.5,0.4041,22.37,True
+222,2026-10-15,Ethan L,Miguel,Ethan P,Deva,10,8,1020.5,1112.7,0.3954,22.7,True
+223,2026-10-15,Mykolas,Miguel,Ethan P,Alex,10,8,1028.2,1023.0,0.506,18.55,False
+224,2026-10-15,Mykolas,Ethan L,Ethan P,Miguel,10,5,1170.6,1069.4,0.6145,17.3,False
+225,2026-10-16,Mykolas,Hubert H,Ethan L,Miguel,10,6,1231.9,1052.5,0.6955,13.12,False
+226,2026-10-16,Mykolas,Ethan L,Ethan P,Miguel,10,0,1187.9,1045.6,0.6583,17.23,False
+227,2026-10-16,Mykolas,Miguel,Hubert H,Ethan L,10,8,1046.7,1246.3,0.2851,26.84,True
+228,2026-10-16,Hubert H,Ethan L,Mykolas,Miguel,10,9,1219.5,1073.6,0.6619,10.82,False
+229,2026-10-16,Mykolas,Hubert H,Miguel,Alex,10,2,1253.6,847.8,0.8663,6.5,False
+230,2026-10-16,Hubert H,Miguel,Ethan L,Mykolas,10,7,1087.9,1208.4,0.3647,25.91,True
+231,2026-10-16,Mykolas,Ethan L,Ethan P,Miguel,10,9,1182.5,1046.0,0.6521,11.13,False
+232,2026-10-16,Mykolas,Ethan P,Ethan L,Miguel,10,8,1192.4,1036.2,0.6725,12.3,False
+233,2026-10-23,Mykolas,Deva,Miguel,Alex,10,1,1091.9,842.6,0.7592,11.94,False
+234,2026-10-23,Mykolas,Deva,Miguel,Alex,10,3,1103.9,830.6,0.7787,10.53,False
+235,2026-10-23,Ethan P,Deva,Mykolas,Miguel,10,3,1075.3,1062.7,0.5145,23.1,False
+236,2026-10-23,Mykolas,Deva,Ethan L,Ethan P,10,8,1114.4,1177.3,0.428,21.47,True
+237,2026-10-23,Hubert H,Miguel,Grégoire,Daniel S,10,3,1079.3,796.0,0.7866,10.15,False
+238,2026-10-23,Hubert H,Miguel,Daniel S,Mykolas,10,6,1089.4,917.6,0.6881,13.44,False
+239,2026-10-23,Ethan P,Miguel,Mykolas,Hubert H,10,9,1024.7,1287.4,0.2298,24.65,True
+240,2026-10-23,Mykolas,Deva,Miguel,Daniel S,10,4,1116.8,732.0,0.8547,6.73,False
+241,2026-10-23,Mykolas,Miguel,Ethan P,Daniel S,10,4,1055.5,882.4,0.6894,14.39,False
+242,2026-10-23,Miguel,Ethan P,Daniel S,Mykolas,10,6,1046.0,891.8,0.6704,14.2,False
+243,2026-10-23,Mykolas,Ethan L,Miguel,Deva,10,4,1177.7,971.3,0.7212,12.92,False
+244,2026-10-23,Mykolas,Ethan L,Miguel,Ethan P,10,8,1190.7,1053.8,0.6526,13.04,False
+245,2026-10-23,Mykolas,Miguel,Deva,Ethan L,10,9,1069.9,1085.7,0.4818,16.58,True
+246,2026-10-23,Ethan P,Deva,Antoine D,Miguel,10,9,1092.7,1060.9,0.5366,14.83,False
+247,2026-10-23,Mykolas,Miguel,Ethan P,Ethan L,10,6,1079.0,1173.7,0.3927,26.17,True
+248,2026-10-23,Mykolas,Miguel,Ethan P,Daniel S,10,8,1105.2,855.8,0.7592,9.04,False
+249,2026-10-23,Mykolas,Ethan P,Miguel,Daniel S,10,5,1234.7,726.3,0.9123,3.94,False
+250,2026-10-23,Mykolas,Miguel,Grégoire,Hubert H,10,5,1114.2,1150.0,0.4589,24.28,True

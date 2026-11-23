@@ -1,0 +1,65 @@
+a,b,games,wins,win_pct,goal_diff_per_game
+Daniel R,Mykolas,29,18,62.1,1.86
+Deva,Mykolas,28,16,57.1,1.11
+Ethan P,Mykolas,27,17,63.0,0.67
+Miguel,Mykolas,25,18,72.0,1.52
+Deva,Ethan P,25,13,52.0,0.64
+Ethan L,Mykolas,23,16,69.6,2.43
+Ethan L,Ethan P,21,14,66.7,2.05
+Ethan P,Miguel,19,7,36.8,-1.42
+Ethan L,Miguel,19,6,31.6,-2.32
+Daniel S,Mykolas,16,3,18.8,-2.88
+Daniel S,Miguel,16,0,0.0,-5.75
+Deva,Hubert H,14,7,50.0,0.57
+Hubert H,Mykolas,13,9,69.2,3.62
+Deva,Ethan L,13,5,38.5,-1.54
+Daniel R,Deva,11,4,36.4,-0.91
+Daniel R,Hubert H,10,7,70.0,1.8
+Deva,Miguel,10,4,40.0,-0.8
+Daniel R,Daniel S,9,5,55.6,0.0
+Daniel S,Ethan P,9,4,44.4,-1.33
+Antoine D,Mykolas,8,7,87.5,4.5
+Antoine D,Miguel,8,6,75.0,2.0
+Daniel S,Ethan L,8,3,37.5,-1.38
+Hubert H,Miguel,7,6,85.7,2.14
+Antoine D,Deva,7,5,71.4,3.14
+Ethan L,Hubert H,7,5,71.4,2.0
+Alexandra V,Hubert H,6,6,100.0,4.67
+Daniel S,Deva,6,1,16.7,-4.0
+Alexandra V,Mykolas,6,1,16.7,-4.67
+Alex,Miguel,6,0,0.0,-6.67
+Daniel R,Ethan P,5,5,100.0,6.0
+Daniel R,Ethan L,5,4,80.0,4.0
+Daniel R,Miguel,5,2,40.0,-1.8
+Antoine D,Ethan L,4,3,75.0,3.5
+Daniel S,Hubert H,4,2,50.0,2.25
+Antoine D,Daniel S,4,2,50.0,0.5
+Alex,Daniel R,4,2,50.0,2.0
+Alexandra V,Ethan L,4,1,25.0,-3.25
+Alex,Deva,4,0,0.0,-6.0
+Alexandra V,Daniel R,4,0,0.0,-3.0
+Ethan P,Hubert H,3,3,100.0,7.33
+Alex,Mykolas,3,2,66.7,2.0
+Antoine D,Ethan P,3,2,66.7,2.0
+Alexandra V,Antoine D,3,1,33.3,-5.0
+Alexandra V,Ethan P,3,1,33.3,-1.67
+Alexandra V,Daniel S,3,1,33.3,-2.33
+Alexandra V,Miguel,3,1,33.3,-4.67
+Adam,Ethan P,3,0,0.0,-6.33
+Antoine D,Daniel R,3,0,0.0,-3.67
+Alex,Daniel S,3,0,0.0,-7.67
+Alex,Ethan P,3,0,0.0,-3.33
+Antoine D,Hubert H,2,2,100.0,5.0
+Alexandra V,Deva,2,2,100.0,1.5
+Adam,Mykolas,2,1,50.0,-1.5
+Adam,Daniel R,2,0,0.0,-3.5
+Badr,Mykolas,1,0,0.0,-7.0
+Hubert H,Semawit,1,0,0.0,-2.0
+Antoine D,Semawit,1,0,0.0,-6.0
+Adam,Daniel S,1,0,0.0,-7.0
+Adam,Ethan L,1,0,0.0,-5.0
+Adam,Alexandra V,1,0,0.0,-9.0
+Adam,Aydin,1,0,0.0,-2.0
+Alex,Ethan L,1,0,0.0,-6.0
+Daniel S,Grégoire,1,0,0.0,-7.0
+Grégoire,Hubert H,1,0,0.0,-5.0
